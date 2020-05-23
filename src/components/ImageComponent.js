@@ -13,7 +13,7 @@ class ImageComponent extends React.Component {
 
   render() {
     return (
-        <h1>I am an image</h1>
+        <h1></h1>
     );
   }
 }

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import BreadContainer from './containers/BreadContainer';
 import './App.css';
+import ViewRecipesBox from './containers/ViewRecipesBox';
 
 class App extends Component {
   render() {
     return(
       <>
         <h1>Bread Boss </h1>
-        <BreadContainer />
+        <ViewRecipesBox />
       </>
     )
   }
