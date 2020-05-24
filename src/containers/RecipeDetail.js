@@ -148,8 +148,8 @@ class RecipeDetail extends Component {
         </tfoot>
       </table>
       <h3>Total hydration = {totalHydration}%</h3>
-      {this.state.scaleRecipe && <h3>Total batch cost = £{totalScaledBatchCost.toFixed(2)}</h3>}
-      {this.state.scaleRecipe && <h3>Cost per loaf = £{costPerLoaf.toFixed(2)}</h3>}
+      {this.state.scaleRecipe && <h3>Raw Materials total per batch = £{totalScaledBatchCost.toFixed(2)}</h3>}
+      {this.state.scaleRecipe && <h3>Raw Materials total per loaf = £{costPerLoaf.toFixed(2)}</h3>}
       </>
     );
   } else {return (

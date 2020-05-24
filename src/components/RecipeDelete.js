@@ -1,7 +1,6 @@
 import React from 'react';
 
 const RecipeDelete = (props) => {
-    console.log(props);
 
     function handleClick(){
         props.onDelete();

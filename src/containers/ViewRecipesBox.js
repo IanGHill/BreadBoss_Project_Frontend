@@ -21,7 +21,7 @@ class ViewRecipesBox extends Component {
     
         fetch(url)
           .then(res => res.json())
-          .then(recipes => this.setState({ recipes: recipes }))
+          .then(recipes => this.setState({ recipes: recipes, selectedRecipeId: recipes[0].id }))
           .catch(err => console.error);
       }
 
@@ -38,7 +38,7 @@ class ViewRecipesBox extends Component {
 
             fetch(url, {method: 'DELETE'})
             .then(res => res.json())
-            .then(recipes => this.setState({ recipes: recipes }))
+            .then(recipes => this.setState({ recipes: recipes, selectedRecipeId: recipes[0].id }) )
             .catch(err => console.error);
         
       }
@@ -62,7 +62,7 @@ class ViewRecipesBox extends Component {
             <>
                 <RecipeSelector recipes={this.state.recipes} onRecipeSelected={this.handleRecipeSelected}
                                 selectedRecipeId={this.state.selectedRecipeId}/>
-                {selectedRecipe && <RecipeDelete onDelete={this.handleDelete}/>}
+                {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={this.handleDelete}/>}
                 <RecipeDetail recipe = {selectedRecipe}/>
                 <ImageComponent/>
             </>
