@@ -47,6 +47,7 @@ class RecipeDetail extends Component {
       const scalingFactor = this.state.numLoaves*this.state.dropWeight/totalDoughWeight;
 
       let totalScaledBatchCost = 0;
+      let totalScaledLevainCost = 0;
       let costPerLoaf = 0;
       this.props.recipe.ingredients.forEach(ingredient => {
         if (ingredient.rawMaterial.packSize){
@@ -74,23 +75,26 @@ class RecipeDetail extends Component {
         return total + ingredient.quantity;
       },0);
      
+      levainIngredients.forEach(ingredient => {
+        if (ingredient.rawMaterial.packSize){
+          totalScaledLevainCost += (ingredient.quantity * scalingFactor * ingredient.rawMaterial.price / ingredient.rawMaterial.packSize)
+        }
+      });
       
       const levainRows = levainIngredients.map(ingredient => { 
         return <RecipeRow passedIngredient={ingredient}
           totalFlour={totalFlour}
           scaledRecipe={this.state.scaleRecipe}
           scalingFactor={scalingFactor}
-          key={ingredient.id} value={ingredient.id}  
-/>
-})
+          key={ingredient.id} value={ingredient.id}/>
+      })
       const doughIngredients = this.props.recipe.ingredients.filter(ingredient => ingredient.category === "Dough");
       const doughRows = doughIngredients.map(ingredient => {
         return <RecipeRow passedIngredient={ingredient}
                           totalFlour={totalFlour}
                           scaledRecipe={this.state.scaleRecipe}
                           scalingFactor={scalingFactor}
-                          key={ingredient.id} value={ingredient.id}  
-        />
+                          key={ingredient.id} value={ingredient.id}/>
       })
 
     return (
@@ -98,7 +102,7 @@ class RecipeDetail extends Component {
       <h2>{this.props.recipe.name}</h2>
       <RecipeScalingSwitch
         isOn={this.state.scaleRecipe}
-        onColor="lightblue"
+        onColor="silver"
         handleToggle={() => this.setState({scaleRecipe: !this.state.scaleRecipe})}
       />
       {this.state.scaleRecipe && <RecipeScalingInput onNumLoavesChange={this.handleNumLoavesInput}
@@ -107,7 +111,7 @@ class RecipeDetail extends Component {
         <thead>
           <tr>
             <th>Ingredient</th>
-            <th>Quantity(g)</th>
+            <th>Base Recipe(g)</th>
             <th>Bakers %</th>
             {this.state.scaleRecipe && <th>Scaled Recipe (g)</th>}
             {this.state.scaleRecipe && <th>Ingredient cost</th>}
@@ -116,12 +120,12 @@ class RecipeDetail extends Component {
         <tbody>
           <tr><th colSpan="4" className="tableSubHeading"><i>Levain</i></th></tr>
           {levainRows}
-          <tr>
+          {/* <tr>
             <td>Total Levain</td>
             <td>{totalLevainWeight}</td>
             <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
             {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
-          </tr>
+          </tr> */}
    
           <tr><th colSpan="9" className="tableSubHeading"><i>Dough</i></th></tr>
           <tr>
@@ -129,6 +133,7 @@ class RecipeDetail extends Component {
             <td>{totalLevainWeight}</td>
             <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
             {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
+            {this.state.scaleRecipe && <td>£{totalScaledLevainCost.toFixed(2)}</td>}
           </tr>
           {doughRows}
           <tr>
@@ -136,15 +141,15 @@ class RecipeDetail extends Component {
             <td>{totalDoughWeight}</td>
             <td></td>
             {this.state.scaleRecipe && <td>{this.state.numLoaves*this.state.dropWeight}</td>}
+            {this.state.scaleRecipe && <td>£{totalScaledBatchCost.toFixed(2)}</td>}
           </tr>
         </tbody>
         <tfoot>
         </tfoot>
       </table>
       <h3>Total hydration = {totalHydration}%</h3>
-      {this.state.scaleRecipe && <h3>Total batch cost = £{totalScaledBatchCost}</h3>}
-      {this.state.scaleRecipe && <h3>Cost per loaf = £{costPerLoaf}</h3>}
-      {this.state.scaleRecipe && <h3>scalingFactor = {scalingFactor}</h3>}
+      {this.state.scaleRecipe && <h3>Total batch cost = £{totalScaledBatchCost.toFixed(2)}</h3>}
+      {this.state.scaleRecipe && <h3>Cost per loaf = £{costPerLoaf.toFixed(2)}</h3>}
       </>
     );
   } else {return (

@@ -6,6 +6,7 @@ const RecipeSelector = (props) => {
   })
 
   function handleChange(event) {
+    event.preventDefault();
     props.onRecipeSelected(event.target.value);
   }
 
