@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 
 
-class LevainForm extends Component {
+class IngredientForm extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            levainQuantity: 0,
+            quantity: 0,
             ingredientID: 0
         }
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -15,19 +15,27 @@ class LevainForm extends Component {
     }
 
     handleInputChange(event) {
-        console.log(event);
-        this.setState({levainQuantity: event.target.value});
+        
+        this.setState({quantity: event.target.value});
       }
 
       handleSelectChange(event) {
-        console.log(event);
+       
         this.setState({ingredientID: event.target.value});
       }
     
       handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(this.state);
-        this.setState({levainQuantity: 0, ingredientID: 0});
+
+        const quantity = this.state.quantity;
+        const ingredientID = this.state.ingredientID;
+        if (!quantity || ! ingredientID){
+            return
+        }
+
+        this.props.onSubmit({quantity: quantity, ingredientID: ingredientID});
+
+        this.setState({quantity: 0, ingredientID: 0});
         
       }
 
@@ -40,29 +48,29 @@ class LevainForm extends Component {
           })
 
         return (
-            <form >
+            <form onSubmit={this.handleSubmit} >
                 <div>
-                    <select id="levain-selector" onChange={this.handleSelectChange} name="ingredientID" defaultValue="default">
-                    <option disabled value="default">Select Ingredient</option>
+                    <select id="ingredient-selector" onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
+                    <option value >Select Ingredient</option>
                     {options}
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="levain-quantity">Quantity:</label>
+                    <label htmlFor="ingredient-quantity">Quantity:</label>
                     <input
                         onChange={this.handleInputChange}
                         type="number"
-                        id="levain-quantity"
-                        name="levainQuantity"
-                        // value={this.state.levainQuantity}
+                        id="ingredient-quantity"
+                        name="quantity"
+                        value={this.state.quantity}
                        />
                 </div>
                 <div>
-                    <input onClick={this.handleSubmit} type="submit" value="submit" />
+                    <input type="submit" value="Add" />
                 </div>
             </form>
         );
     }
   }
 
-export default LevainForm;
+export default IngredientForm;

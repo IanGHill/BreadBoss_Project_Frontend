@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LevainForm from '../components/LevainForm';
+import IngredientForm from '../components/IngredientForm';
 
 
 class CreateRecipesBox extends Component {
@@ -43,7 +43,7 @@ class CreateRecipesBox extends Component {
         // const updateIngredients = this.state.recipeIngredients;
         const foundIngredient = this.state.levainRawMaterials.find(element => element.id === parseInt(data.ingredientID));
         const tempArray = this.state.recipeIngredients.concat({
-            category: 'Levain', quantity: parseInt(data.levainQuantity), rawMaterial: foundIngredient});
+            category: 'Levain', quantity: parseInt(data.quantity), rawMaterial: foundIngredient});
         
         this.setState({recipeIngredients: tempArray});
     }
@@ -60,12 +60,12 @@ class CreateRecipesBox extends Component {
             return total + ingredient.quantity;
             },0);
             var levainRows = levainIngredients.map(ingredient => { 
-                return <><tr key={ingredient.rawMaterial.id} value={ingredient.rawMaterial.id}>
+                return <tr key={Date.now()} value={ingredient.rawMaterial.id}>
                             <td>{ingredient.rawMaterial.name}</td>
                             <td>{ingredient.quantity}</td>
                             <td></td>
                             <td></td>
-                        </tr></>
+                        </tr>
             })
 
             const flourIngredients = this.state.recipeIngredients.filter(ingredient => ingredient.rawMaterial.type === "Flour");
@@ -118,7 +118,7 @@ class CreateRecipesBox extends Component {
               </tr>
                     </tbody>
               </table>
-              <LevainForm ingredients={this.state.levainRawMaterials}
+              <IngredientForm ingredients={this.state.levainRawMaterials}
                             onSubmit={this.handleLevainSubmit}/>
             
             </>
