@@ -61,8 +61,8 @@ class ViewRecipesBox extends Component {
             <>
                 <RecipeSelector recipes={this.state.recipes} onRecipeSelected={this.handleRecipeSelected}
                                 selectedRecipeId={this.state.selectedRecipeId}/>
-                {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={this.handleDelete}/>}
                 <RecipeDetail recipe = {selectedRecipe}/>
+                {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={this.handleDelete}/>}
             </>
         )
     }

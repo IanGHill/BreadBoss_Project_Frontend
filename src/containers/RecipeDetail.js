@@ -100,58 +100,75 @@ class RecipeDetail extends Component {
 
     return (
       <>
-      <h2>{this.props.recipe.name}</h2>
-      <RecipeScalingSwitch
-        isOn={this.state.scaleRecipe}
-        onColor="silver"
-        handleToggle={() => this.setState({scaleRecipe: !this.state.scaleRecipe})}
-      />
-      {this.state.scaleRecipe && <RecipeScalingInput onNumLoavesChange={this.handleNumLoavesInput}
-                                                    onDropWeightChange={this.handleDropWeightInput}/>}
-      <table> 
-        <thead>
-          <tr>
-            <th>Ingredient</th>
-            <th>Base Recipe(g)</th>
-            <th>Bakers %</th>
-            {this.state.scaleRecipe && <th>Scaled Recipe (g)</th>}
-            {this.state.scaleRecipe && <th>Ingredient cost</th>}
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th colSpan="4" className="tableSubHeading"><i>Levain</i></th></tr>
-          {levainRows}
-          {/* <tr>
-            <td>Total Levain</td>
-            <td>{totalLevainWeight}</td>
-            <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
-            {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
-          </tr> */}
-   
-          <tr><th colSpan="9" className="tableSubHeading"><i>Dough</i></th></tr>
-          <tr>
-            <td>Levain</td>
-            <td>{totalLevainWeight}</td>
-            <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
-            {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
-            {this.state.scaleRecipe && <td>£{totalScaledLevainCost.toFixed(2)}</td>}
-          </tr>
-          {doughRows}
-          <tr>
-            <td>Total Recipe</td>
-            <td>{totalDoughWeight}</td>
-            <td></td>
-            {this.state.scaleRecipe && <td>{this.state.numLoaves*this.state.dropWeight}</td>}
-            {this.state.scaleRecipe && <td>£{totalScaledBatchCost.toFixed(2)}</td>}
-          </tr>
-        </tbody>
-        <tfoot>
-        </tfoot>
-      </table>
-      <h3>Total hydration = {totalHydration}%</h3>
-      {this.state.scaleRecipe && <h3>Raw Materials total per batch = £{totalScaledBatchCost.toFixed(2)}</h3>}
-      {this.state.scaleRecipe && <h3>Raw Materials total per loaf = £{costPerLoaf.toFixed(2)}</h3>}
-      <ImageComponent url = {this.props.recipe.imageUrl}/>
+      
+      <div className="main-container">
+    
+        <div className="flex-item main-left">
+          <h2>{this.props.recipe.name}</h2>
+          <table> 
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Base Recipe(g)</th>
+                <th>Bakers %</th>
+                {this.state.scaleRecipe && <th>Scaled Batch(g)</th>}
+                {this.state.scaleRecipe && <th>Cost</th>}
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th colSpan="4" className="tableSubHeading"><i>Levain</i></th></tr>
+              {levainRows}
+              {/* <tr>
+                <td>Total Levain</td>
+                <td>{totalLevainWeight}</td>
+                <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
+                {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
+              </tr> */}
+      
+              <tr><th colSpan="9" className="tableSubHeading"><i>Dough</i></th></tr>
+              <tr>
+                <td>Levain</td>
+                <td>{totalLevainWeight}</td>
+                <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
+                {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
+                {this.state.scaleRecipe && <td>£{totalScaledLevainCost.toFixed(2)}</td>}
+              </tr>
+              {doughRows}
+              <tr>
+                <td>Total Hydration</td>
+                <td></td>
+                <td>{totalHydration}%</td>
+                {this.state.scaleRecipe && <td></td>}
+                {this.state.scaleRecipe && <td></td>}
+              </tr>
+              <tr>
+                <td>Total Recipe</td>
+                <td>{totalDoughWeight}</td>
+                <td></td>
+                {this.state.scaleRecipe && <td>{this.state.numLoaves*this.state.dropWeight}</td>}
+                {this.state.scaleRecipe && <td>£{totalScaledBatchCost.toFixed(2)}</td>}
+              </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+          </table>
+          <div className="flex-container">
+            <p className="ingredient-cost">Scale?</p>
+            <RecipeScalingSwitch
+              isOn={this.state.scaleRecipe}
+              onColor="silver"
+              handleToggle={() => this.setState({scaleRecipe: !this.state.scaleRecipe})}
+            />
+            
+            {this.state.scaleRecipe && <RecipeScalingInput onNumLoavesChange={this.handleNumLoavesInput}
+                                                          onDropWeightChange={this.handleDropWeightInput}/>}
+            {this.state.scaleRecipe && <p className="ingredient-cost">Ingredient cost/loaf = £{costPerLoaf.toFixed(2)}</p>}
+          </div>
+        </div>
+        <div className="flex-item main-right">
+          <ImageComponent url = {this.props.recipe.imageUrl}/>
+        </div>
+      </div>
       </>
     );
   } else {return (

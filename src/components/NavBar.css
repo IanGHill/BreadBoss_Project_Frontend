@@ -1,0 +1,22 @@
+.navbar-flex-container {
+    display:flex;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+  .main {
+    flex: 4;
+    margin-left: 50px;
+  }
+
+  .one-quarter {
+    flex: 1;
+    margin-bottom: 20px;
+    padding: 0;
+    border: 1px solid black;  
+  }
+
+  .text-link {
+    text-decoration: none;
+  }

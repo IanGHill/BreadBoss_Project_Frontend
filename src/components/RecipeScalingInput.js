@@ -1,4 +1,5 @@
 import React from 'react';
+import './RecipeScalingInput.css';
 
 const RecipeScalingInput = (props) => {
 
@@ -12,11 +13,11 @@ const RecipeScalingInput = (props) => {
 
     return(
             <>    
-            <label htmlFor="numLoaves">Number of Loaves: </label>
-            <input type="number" id="numLoaves" name="numLoaves" onChange={handleNumLoavesChange} />
+            {/* <label htmlFor="numLoaves">Number of Loaves: </label> */}
+            <input type="number" className="text-input" id="numLoaves" name="numLoaves" placeholder="# Loaves" onChange={handleNumLoavesChange} />
             <br/>
-            <label htmlFor="dropWeight">Drop Weight: </label>
-            <input type="number" id="dropWeight" name="dropWeight" onChange={handleDropWeightChange}/>           
+            {/* <label htmlFor="dropWeight">Drop Weight: </label> */}
+            <input type="number" className="text-input" id="dropWeight" name="dropWeight" placeholder="Drop Weight" onChange={handleDropWeightChange}/>           
             </>
     )
     

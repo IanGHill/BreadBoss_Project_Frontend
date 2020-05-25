@@ -1,5 +1,15 @@
 .home-image {
-    height: 600px;
-    width: 1000px;
+    height: 420px;
+    width: 700px;
     border: 1px solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0;
+    padding: 0;
+  }
+
+  .center{
+    text-justify: auto;
+    text-align: center;
   }

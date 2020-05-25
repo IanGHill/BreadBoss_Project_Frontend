@@ -9,3 +9,35 @@ th, td {
     text-align: left;
   }
 
+  .main-container{
+    display: flex;
+    justify-content: space-between;
+    flex: 7;
+    flex-direction: row;
+  }
+  .main-left {
+    flex: 4;
+    /* padding: 10px; */
+    margin-left: 100px;
+    margin-right: 0px;
+  }
+  .main-right {
+    flex: 3;
+    /* padding: 10px; */
+    margin-left: 0px;
+  
+  }
+
+  .flex-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 5px;
+    padding: 5px;
+  
+  }
+
+  .ingredient-cost{
+    margin: 3px 0px 0px 0px;
+    padding: 0px;
+  }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './RecipeDelete.css';
 
 const RecipeDelete = (props) => {
 
@@ -6,7 +7,9 @@ const RecipeDelete = (props) => {
         props.onDelete();
     }
     return(
-            <button type="button" onClick={handleClick}>Delete Selected Recipe</button>        
+        <div className="delete-button">
+            <button type="button" onClick={handleClick}>Delete Selected Recipe</button>   
+        </div>     
     )
     
 }

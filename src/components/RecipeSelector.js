@@ -11,10 +11,12 @@ const RecipeSelector = (props) => {
   }
 
   return (
-    <select id="recipe-selector" onChange={handleChange} defaultValue="default">
-      <option disabled value="default">Choose a recipe...</option>
-      {options}
-    </select>
+    <div className="center">
+      <select id="recipe-selector" onChange={handleChange} defaultValue="default">
+        <option disabled value="default">Choose a recipe...</option>
+        {options}
+      </select>
+    </div>
   )
 }
 
