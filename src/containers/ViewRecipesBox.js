@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import RecipeDetail from './RecipeDetail';
 import RecipeSelector from '../components/RecipeSelector';
-import ImageComponent from '../components/ImageComponent';
 import RecipeDelete from '../components/RecipeDelete';
 
 class ViewRecipesBox extends Component {
@@ -64,7 +63,6 @@ class ViewRecipesBox extends Component {
                                 selectedRecipeId={this.state.selectedRecipeId}/>
                 {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={this.handleDelete}/>}
                 <RecipeDetail recipe = {selectedRecipe}/>
-                <ImageComponent/>
             </>
         )
     }

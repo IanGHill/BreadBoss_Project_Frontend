@@ -3,6 +3,7 @@ import './RecipeDetail.css';
 import RecipeRow from '../components/RecipeRow';
 import RecipeScalingSwitch from '../components/RecipeScalingSwitch';
 import RecipeScalingInput from '../components/RecipeScalingInput';
+import ImageComponent from '../components/ImageComponent';
 
 class RecipeDetail extends Component {
   constructor(props) {
@@ -150,6 +151,7 @@ class RecipeDetail extends Component {
       <h3>Total hydration = {totalHydration}%</h3>
       {this.state.scaleRecipe && <h3>Raw Materials total per batch = £{totalScaledBatchCost.toFixed(2)}</h3>}
       {this.state.scaleRecipe && <h3>Raw Materials total per loaf = £{costPerLoaf.toFixed(2)}</h3>}
+      <ImageComponent url = {this.props.recipe.imageUrl}/>
       </>
     );
   } else {return (

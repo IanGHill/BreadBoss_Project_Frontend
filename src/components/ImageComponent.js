@@ -1,21 +1,11 @@
 import React from 'react';
+import './ImageComponent.css';
 
-class ImageComponent extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-
-    }
-
-  }
-
-
-  render() {
+const ImageComponent = (props) => {
+  console.log(props);
     return (
-        <h1></h1>
+      <img id="recipe-image" className="recipe-image" src={'./images/' + props.url} alt={props.url}/>
     );
   }
-}
 
 export default ImageComponent;
