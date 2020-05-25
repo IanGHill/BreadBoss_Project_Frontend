@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ 
 }
 
 h1 {
@@ -10,4 +11,7 @@ h1 {
   background-image: url(/images/Spelt.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 } */

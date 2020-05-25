@@ -118,12 +118,6 @@ class RecipeDetail extends Component {
             <tbody>
               <tr><th colSpan="4" className="tableSubHeading"><i>Levain</i></th></tr>
               {levainRows}
-              {/* <tr>
-                <td>Total Levain</td>
-                <td>{totalLevainWeight}</td>
-                <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
-                {this.state.scaleRecipe && <td>{Math.round(totalLevainWeight*scalingFactor)}</td>}
-              </tr> */}
       
               <tr><th colSpan="9" className="tableSubHeading"><i>Dough</i></th></tr>
               <tr>
