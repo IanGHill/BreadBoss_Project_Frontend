@@ -49,25 +49,27 @@ class IngredientForm extends Component {
 
         return (
             <form onSubmit={this.handleSubmit} >
-                <div>
-                    <select id="ingredient-selector" onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
-                    <option value >Select Ingredient</option>
-                    {options}
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="ingredient-quantity">Quantity:</label>
-                    <input
-                        onChange={this.handleInputChange}
-                        type="number"
-                        id="ingredient-quantity"
-                        name="quantity"
-                        value={this.state.quantity}
-                       />
-                </div>
-                <div>
-                    <input type="submit" value="Add" />
-                </div>
+              <div className="flex-container">
+                  <div>
+                      <select id="ingredient-selector" onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
+                      <option value >Select Ingredient</option>
+                      {options}
+                      </select>
+                  </div>
+                  <div>
+                      <label htmlFor="ingredient-quantity">Quantity:</label>
+                      <input
+                          onChange={this.handleInputChange}
+                          type="number"
+                          id="ingredient-quantity"
+                          name="quantity"
+                          value={this.state.quantity}
+                        />
+                  </div>
+                  <div>
+                      <input type="submit" value={this.props.buttonText} />
+                  </div>
+              </div>
             </form>
         );
     }

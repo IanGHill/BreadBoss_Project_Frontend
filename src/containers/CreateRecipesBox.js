@@ -40,10 +40,20 @@ class CreateRecipesBox extends Component {
         
     handleLevainSubmit(data) {
         console.log(data);
-        // const updateIngredients = this.state.recipeIngredients;
+       
         const foundIngredient = this.state.levainRawMaterials.find(element => element.id === parseInt(data.ingredientID));
         const tempArray = this.state.recipeIngredients.concat({
             category: 'Levain', quantity: parseInt(data.quantity), rawMaterial: foundIngredient});
+        
+        this.setState({recipeIngredients: tempArray});
+    }
+
+    handleDoughSubmit(data) {
+        console.log(data);
+
+        const foundIngredient = this.state.doughRawMaterials.find(element => element.id === parseInt(data.ingredientID));
+        const tempArray = this.state.recipeIngredients.concat({
+            category: 'Dough', quantity: parseInt(data.quantity), rawMaterial: foundIngredient});
         
         this.setState({recipeIngredients: tempArray});
     }
@@ -60,7 +70,7 @@ class CreateRecipesBox extends Component {
             return total + ingredient.quantity;
             },0);
             var levainRows = levainIngredients.map(ingredient => { 
-                return <tr key={Date.now()} value={ingredient.rawMaterial.id}>
+                return <tr key={'Levain' + ingredient.rawMaterial.id} value={ingredient.rawMaterial.id}>
                             <td>{ingredient.rawMaterial.name}</td>
                             <td>{ingredient.quantity}</td>
                             <td></td>
@@ -97,12 +107,12 @@ class CreateRecipesBox extends Component {
                     {levainRows}
                     
                     <tr><th colSpan="4" className="tableSubHeading"><i>Dough</i></th></tr>
-                     {levainRows && <tr>
+                     <tr>
                         <td>Levain</td>
                         <td>{totalLevainWeight}</td>
                         <td>{totalFlour && (100*totalLevainWeight/totalFlour).toFixed(1)}</td>
                         <td></td>
-                    </tr>}
+                    </tr>
                     {/* {doughRows} */}
                     <tr>
                 <td>Total Hydration</td>
@@ -119,7 +129,11 @@ class CreateRecipesBox extends Component {
                     </tbody>
               </table>
               <IngredientForm ingredients={this.state.levainRawMaterials}
-                            onSubmit={this.handleLevainSubmit}/>
+                            onSubmit={this.handleLevainSubmit}
+                            buttonText="Add to Levain"/>
+                <IngredientForm ingredients={this.state.doughRawMaterials}
+                            onSubmit={this.handleDoughSubmit}
+                            buttonText="Add to Dough"/>
             
             </>
         )
