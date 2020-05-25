@@ -5,7 +5,6 @@ import CreateRecipesBox from "../containers/CreateRecipesBox";
 import Home from "./Home";
 import About from "./About";
 import ErrorPage from "./ErrorPage";
-import './Main.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class Main extends Component {
