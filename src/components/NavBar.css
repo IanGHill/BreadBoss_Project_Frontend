@@ -1,7 +1,10 @@
 .navbar-flex-container {
     display:flex;
     text-align: center;
-    background-color: silver;
+    font-weight: bold;
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+    color: white;
+    background-color: black;
     /* margin-left: 100px;
     margin-right: 100px; */
   }
@@ -13,11 +16,33 @@
 
   .one-quarter {
     flex: 1;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     border: 0px;  
   }
 
+  /* unvisited link */
   .text-link {
     text-decoration: none;
+    color: white;
   }
+
+/* visited link */
+link:visited {
+  text-decoration: none;
+  color: white;
+}
+
+/* mouse over link */
+.text-link:hover {
+  background-color: black;
+  text-decoration: none;
+  color: white
+}
+
+/* selected link */
+.text-link:active {
+  background-color: silver;
+  text-decoration: none;
+  color: black;
+}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import IngredientForm from '../components/IngredientForm';
 import SaveRecipeForm from '../components/SaveRecipeForm';
-
+import './CreateRecipesBox.css';
 
 class CreateRecipesBox extends Component {
     constructor(props){
@@ -141,7 +141,7 @@ class CreateRecipesBox extends Component {
                             <td>{ingredient.rawMaterial.name}</td>
                             <td>{ingredient.quantity}</td>
                             <td>{totalFlour && (100*ingredient.quantity/totalFlour).toFixed(1)}%</td>
-                            <td><button id={'Levain' + ingredient.rawMaterial.id} type="button" onClick={this.handleDelete}></button></td>
+                            <td className="noCellBorder"><button id={'Levain' + ingredient.rawMaterial.id} className="bin-button" type="button" onClick={this.handleDelete}></button></td>
                         </tr>
             })
 
@@ -152,7 +152,7 @@ class CreateRecipesBox extends Component {
                             <td>{ingredient.rawMaterial.name}</td>
                             <td>{ingredient.quantity}</td>
                             <td>{(100*ingredient.quantity/totalFlour).toFixed(1)}%</td>
-                            <td><button type="button" onClick={this.handleDelete}></button></td>
+                            <td className="noCellBorder"><button id={'Dough' + ingredient.rawMaterial.id} className="bin-button" type="button" onClick={this.handleDelete}></button></td>
                         </tr>
             })
 
@@ -172,9 +172,9 @@ class CreateRecipesBox extends Component {
                     <thead>
                         <tr>
                             <th>Ingredient</th>
-                            <th>Base Recipe(g)</th>
+                            <th>Quantity(g)</th>
                             <th>Bakers %</th>
-                            <th>Delete</th>
+                            <th className="noCellBorder"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -186,26 +186,26 @@ class CreateRecipesBox extends Component {
                         <td>Levain</td>
                         <td>{totalLevainWeight}</td>
                         <td>{totalFlour && (100*totalLevainWeight/totalFlour).toFixed(1)}%</td>
-                        <td></td>
+                        <td className="noCellBorder"></td>
                     </tr>
                     {doughRows}
                     <tr>
                         <td>Total Hydration</td>
                         <td></td>
                         <td>{totalHydration}%</td>
-                        <td></td>
+                        <td className="noCellBorder"></td>
                     </tr>
                     <tr>
                         <td>Total Flour</td>
                         <td>{totalFlour}</td>
                         <td>{totalFlour && (100*totalFlour/totalFlour).toFixed(1)}%</td>
-                        <td></td>
+                        <td className="noCellBorder"></td>
                     </tr>
                     <tr>
                         <td>Total Recipe</td>
                         <td>{totalDoughWeight}</td>
                         <td></td>
-                        <td></td>
+                        <td className="noCellBorder"></td>
                     </tr>
                     </tbody>
               </table>

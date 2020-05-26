@@ -1,4 +1,5 @@
 import React from 'react';
+import './RecipeSelector.css';
 
 const RecipeSelector = (props) => {
   const options = props.recipes.map(recipe => {

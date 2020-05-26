@@ -17,7 +17,7 @@ const RecipeScalingInput = (props) => {
             <input type="number" className="text-input" id="numLoaves" name="numLoaves" placeholder="# Loaves" onChange={handleNumLoavesChange} />
             <br/>
             {/* <label htmlFor="dropWeight">Drop Weight: </label> */}
-            <input type="number" className="text-input" id="dropWeight" name="dropWeight" placeholder="Drop Weight" onChange={handleDropWeightChange}/>           
+            <input type="number" className="text-input" id="dropWeight" name="dropWeight" placeholder="Weight(g)" onChange={handleDropWeightChange}/>           
             </>
     )
     

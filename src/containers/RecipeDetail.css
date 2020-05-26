@@ -1,12 +1,14 @@
 th, td {
-    padding: 5px 5px 0px 5px;
+    padding: 5px;
     border: 1px solid #ddd;
+    margin: 0px;
   }
 
   .tableSubHeading {
     border: 0px;
     padding-left: 100px;
     text-align: left;
+    color: gray;
   }
 
   .main-container{
@@ -18,7 +20,7 @@ th, td {
   .main-left {
     flex: 4;
     /* padding: 10px; */
-    margin-left: 100px;
+    margin-left: 120px;
     margin-right: 0px;
   }
   .main-right {
@@ -40,4 +42,18 @@ th, td {
   .ingredient-cost{
     margin: 3px 0px 0px 0px;
     padding: 0px;
+  }
+  .table-header-row{
+    background-color: black;
+    color: white;
+  }
+
+  .table-footer-row{
+    background-color: gray;
+    color: black;
+    font-weight: bold;
+  }
+
+  .table-levain-row{
+    background-color: lightgray;
   }

@@ -107,7 +107,7 @@ class RecipeDetail extends Component {
           <h2>{this.props.recipe.name}</h2>
           <table> 
             <thead>
-              <tr>
+              <tr className="table-header-row">
                 <th>Ingredient</th>
                 <th>Base Recipe(g)</th>
                 <th>Bakers %</th>
@@ -120,7 +120,7 @@ class RecipeDetail extends Component {
               {levainRows}
       
               <tr><th colSpan="9" className="tableSubHeading"><i>Dough</i></th></tr>
-              <tr>
+              <tr className="table-levain-row">
                 <td>Levain</td>
                 <td>{totalLevainWeight}</td>
                 <td>{(100*totalLevainWeight/totalFlour).toFixed(1)}</td>
@@ -128,22 +128,22 @@ class RecipeDetail extends Component {
                 {this.state.scaleRecipe && <td>£{totalScaledLevainCost.toFixed(2)}</td>}
               </tr>
               {doughRows}
-              <tr>
+              </tbody>
+              <tfoot>
+              <tr className="table-footer-row">
                 <td>Total Hydration</td>
                 <td></td>
                 <td>{totalHydration}%</td>
                 {this.state.scaleRecipe && <td></td>}
                 {this.state.scaleRecipe && <td></td>}
               </tr>
-              <tr>
+              <tr className="table-footer-row">
                 <td>Total Recipe</td>
                 <td>{totalDoughWeight}</td>
                 <td></td>
                 {this.state.scaleRecipe && <td>{this.state.numLoaves*this.state.dropWeight}</td>}
                 {this.state.scaleRecipe && <td>£{totalScaledBatchCost.toFixed(2)}</td>}
               </tr>
-            </tbody>
-            <tfoot>
             </tfoot>
           </table>
           <div className="flex-container">
