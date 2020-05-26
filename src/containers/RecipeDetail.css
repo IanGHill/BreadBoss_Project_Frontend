@@ -23,6 +23,13 @@ th, td {
     margin-left: 120px;
     margin-right: 0px;
   }
+  .main-left-2 {
+    flex: 4;
+    padding-left: 100px;
+    padding-right: auto;
+    margin-left: 120px;
+    margin-right: 0px;
+  }
   .main-right {
     flex: 3;
     /* padding: 10px; */
@@ -56,4 +63,8 @@ th, td {
 
   .table-levain-row{
     background-color: lightgray;
+  }
+
+  h2{
+    margin-top: 1.8em;
   }

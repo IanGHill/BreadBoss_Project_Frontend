@@ -167,61 +167,72 @@ class CreateRecipesBox extends Component {
         };
         return(
             <>
-                <h2>Build a new recipe</h2>
-                <table> 
-                    <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Quantity(g)</th>
-                            <th>Bakers %</th>
-                            <th className="noCellBorder"></th>
+            <div className="main-container">
+    
+                <div className="flex-item main-left-2">
+                    <h2>Build a new recipe</h2>
+                    <table> 
+                        <thead>
+                            <tr className="table-header-row">
+                                <th>Ingredient</th>
+                                <th>Quantity(g)</th>
+                                <th>Bakers %</th>
+                                <th className="noCellBorder"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {this.state.recipeIngredients.length > 0 && (<tr><th colSpan="3" className="tableSubHeading"><i>Levain</i></th></tr>)}
+                        {levainRows}
+                        
+                        {this.state.recipeIngredients.length > 0 && (<tr><th colSpan="3" className="tableSubHeading"><i>Dough</i></th></tr>)}
+                        <tr className="table-levain-row">
+                            <td>Levain</td>
+                            <td>{totalLevainWeight}</td>
+                            <td>{totalFlour && (100*totalLevainWeight/totalFlour).toFixed(1)}%</td>
+                            <td className="noCellBorder"></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    <tr><th colSpan="4" className="tableSubHeading"><i>Levain</i></th></tr>
-                    {levainRows}
-                    
-                    <tr><th colSpan="4" className="tableSubHeading"><i>Dough</i></th></tr>
-                     <tr>
-                        <td>Levain</td>
-                        <td>{totalLevainWeight}</td>
-                        <td>{totalFlour && (100*totalLevainWeight/totalFlour).toFixed(1)}%</td>
-                        <td className="noCellBorder"></td>
-                    </tr>
-                    {doughRows}
-                    <tr>
-                        <td>Total Hydration</td>
-                        <td></td>
-                        <td>{totalHydration}%</td>
-                        <td className="noCellBorder"></td>
-                    </tr>
-                    <tr>
-                        <td>Total Flour</td>
-                        <td>{totalFlour}</td>
-                        <td>{totalFlour && (100*totalFlour/totalFlour).toFixed(1)}%</td>
-                        <td className="noCellBorder"></td>
-                    </tr>
-                    <tr>
-                        <td>Total Recipe</td>
-                        <td>{totalDoughWeight}</td>
-                        <td></td>
-                        <td className="noCellBorder"></td>
-                    </tr>
-                    </tbody>
-              </table>
-              <div>
-              <div><IngredientForm ingredients={this.state.levainRawMaterials}
-                            onSubmit={this.handleLevainSubmit}
-                            selectText="Select Levain Ingredient"
-                            buttonText="Add to Levain"/>
+                        {doughRows}
+                        </tbody>
+                        <tfoot>
+                        <tr className="table-footer-row">
+                            <td>Total Hydration</td>
+                            <td></td>
+                            <td>{totalHydration}%</td>
+                            <td className="noCellBorder"></td>
+                        </tr>
+                        <tr className="table-footer-row">
+                            <td>Total Flour</td>
+                            <td>{totalFlour}</td>
+                            <td>{totalFlour && (100*totalFlour/totalFlour).toFixed(1)}%</td>
+                            <td className="noCellBorder"></td>
+                        </tr>
+                        <tr className="table-footer-row">
+                            <td>Total Recipe</td>
+                            <td>{totalDoughWeight}</td>
+                            <td></td>
+                            <td className="noCellBorder"></td>
+                        </tr>
+                        </tfoot>
+                        
+                    </table>
+                
+                    <div><IngredientForm ingredients={this.state.levainRawMaterials}
+                                    onSubmit={this.handleLevainSubmit}
+                                    selectText="Levain Ingredient"
+                                    buttonText="Add to Levain"/>
+                    </div>
+                    <div>
+                        <IngredientForm ingredients={this.state.doughRawMaterials}
+                                    onSubmit={this.handleDoughSubmit}
+                                    selectText="Dough Ingredient"
+                                    buttonText="Add to Dough"/>
+                    </div>
+                    <div><SaveRecipeForm onSubmit={this.handleSave}/></div>
+                </div>
+                <div className="flex-item main-right">
+                <img id="inredient-image" className="ingredient-image" src={'./images/grains.jpg'} alt="grain"/>
+                </div>
             </div>
-                <IngredientForm ingredients={this.state.doughRawMaterials}
-                            onSubmit={this.handleDoughSubmit}
-                            selectText="Select Dough Ingredient"
-                            buttonText="Add to Dough"/>
-            </div>
-            <div><SaveRecipeForm onSubmit={this.handleSave}/></div>
-
 
             
             </>

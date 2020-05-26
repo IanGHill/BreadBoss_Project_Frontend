@@ -1,4 +1,4 @@
-select{
+#recipe-selector{
     padding: 4px;
     width: 400px;
     height: 30px;
@@ -9,4 +9,9 @@ select{
     background-color: white;
     border-radius: 0px;
     /* box-shadow: 4px 4px #ccc; */
+    outline-color: black;
+}
+
+select:focus{
+    border: 2px solid gray;
 }

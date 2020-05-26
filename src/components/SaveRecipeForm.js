@@ -43,6 +43,7 @@ class IngredientForm extends Component {
                   <div>
                       <input
                           onChange={this.handleInputChange}
+                          className="input-name"
                           type="text"
                           id="save-recipe"
                           name="quantity"

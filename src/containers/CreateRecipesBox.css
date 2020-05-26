@@ -11,5 +11,30 @@
     width: 30px;
     border: 0px;
     padding: 0px;
+    background-color: white;
 
 }
+
+.table-header-row{
+    background-color: black;
+    color: white;
+  }
+
+  .table-footer-row{
+    background-color: gray;
+    color: black;
+    font-weight: bold;
+  }
+
+  .table-levain-row{
+    background-color: lightgray;
+  }
+
+  .ingredient-image {
+    height: 600px;
+    width: 360px;
+    border: 4px solid black;
+    margin-top: 3em;
+    margin-left: 0em;
+    padding-left: 0em;
+  }

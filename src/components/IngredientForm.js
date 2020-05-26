@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './IngredientForm.css';
 
 
 class IngredientForm extends Component {
@@ -60,6 +61,7 @@ class IngredientForm extends Component {
                       <label htmlFor="ingredient-quantity">Quantity(g):</label>
                       <input
                           onChange={this.handleInputChange}
+                          className="input-box"
                           type="number"
                           id="ingredient-quantity"
                           name="quantity"
