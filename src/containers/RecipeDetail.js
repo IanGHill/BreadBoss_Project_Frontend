@@ -160,7 +160,7 @@ class RecipeDetail extends Component {
           </div>
         </div>
         <div className="flex-item main-right">
-          <ImageComponent url = {this.props.recipe.imageUrl}/>
+          <ImageComponent url = {this.props.recipe.imageUrl ? this.props.recipe.imageUrl : 'wheatfields.jpg' }/>
         </div>
       </div>
       </>

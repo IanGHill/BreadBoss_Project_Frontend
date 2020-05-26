@@ -5,6 +5,15 @@
 
 h1 {
   text-align: center;
+  color: white;
+  font-size: 3.5em;
+  font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+  text-shadow: 1px 1px 2px gray; ;
+  background-image: url(/images/triple.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px;
+  margin: 0px;
 }
 
 /* .container{

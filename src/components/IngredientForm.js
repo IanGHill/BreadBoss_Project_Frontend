@@ -52,12 +52,12 @@ class IngredientForm extends Component {
               <div className="flex-container">
                   <div>
                       <select id="ingredient-selector" onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
-                      <option value >Select Ingredient</option>
+                      <option value >{this.props.selectText}</option>
                       {options}
                       </select>
                   </div>
                   <div>
-                      <label htmlFor="ingredient-quantity">Quantity:</label>
+                      <label htmlFor="ingredient-quantity">Quantity(g):</label>
                       <input
                           onChange={this.handleInputChange}
                           type="number"
