@@ -46,23 +46,15 @@ class ViewRecipesBox extends Component {
     render() {
 
         const selectedRecipe = this.state.recipes.find(recipe => recipe.id === this.state.selectedRecipeId);
-        // let selectedRecipe = {};
-        // if (this.state.selectedRecipeId){
-        //     selectedRecipe = this.state.recipes.find(recipe => recipe.id === this.state.selectedRecipeId);
-        // } else {
-        //     selectedRecipe = this.state.recipes.reduce(function(prev, current){
-        //         return(prev.created > current.created) ? prev : current
-        //     })
-
-        //     this.setState({selectedRecipeId: selectedRecipe.id})
-        // }
 
         return(
             <>
                 <RecipeSelector recipes={this.state.recipes} onRecipeSelected={this.handleRecipeSelected}
                                 selectedRecipeId={this.state.selectedRecipeId}/>
                 <RecipeDetail recipe = {selectedRecipe}/>
-                {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={this.handleDelete}/>}
+                {selectedRecipe && (this.state.recipes.length >1) && <RecipeDelete onDelete={e =>
+        window.confirm("Are you sure you wish to delete this recipe?") &&
+        this.handleDelete(e)}/>}
             </>
         )
     }

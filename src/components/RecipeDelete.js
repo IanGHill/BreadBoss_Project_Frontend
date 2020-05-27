@@ -8,7 +8,7 @@ const RecipeDelete = (props) => {
     }
     return(
         <div className="delete-button">
-            <button type="button" onClick={handleClick}>Delete Selected Recipe</button>   
+            <button type="button" id="recipe-delete" onClick={handleClick}>Delete Selected Recipe</button>   
         </div>     
     )
     

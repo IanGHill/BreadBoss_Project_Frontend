@@ -31,10 +31,30 @@
   }
 
   .ingredient-image {
-    height: 600px;
-    width: 360px;
+    height: 500px;
+    width: 500px;
     border: 4px solid black;
     margin-top: 3em;
     margin-left: 0em;
     padding-left: 0em;
+  }
+
+  .build-container{
+    display: flex;
+    justify-content: space-between;
+    flex: 2;
+    flex-direction: row;
+  }
+  .build-left{
+    flex: 1;
+    padding-left: 150px;
+    padding-right: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .build-right {
+    flex: 1;
+    /* padding: 10px; */
+    margin-left: 0px;
+  
   }

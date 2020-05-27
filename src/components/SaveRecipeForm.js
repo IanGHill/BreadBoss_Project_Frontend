@@ -45,14 +45,14 @@ class IngredientForm extends Component {
                           onChange={this.handleInputChange}
                           className="input-name"
                           type="text"
-                          id="save-recipe"
+                          id="save-recipe-name"
                           name="quantity"
                           placeholder="New Recipe Name"
                           value={this.state.recipeName}
                         />
                   </div>
                   <div>
-                      <input type="submit" value="Save Recipe" />
+                      <input id="save-recipe-button" type="submit" value="Save Recipe" />
                   </div>
               </div>
             </form>

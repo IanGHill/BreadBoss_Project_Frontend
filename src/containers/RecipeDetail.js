@@ -104,7 +104,7 @@ class RecipeDetail extends Component {
       <div className="main-container">
     
         <div className="flex-item main-left">
-          <h2>{this.props.recipe.name}</h2>
+          <h2 id="recipeName">{this.props.recipe.name}</h2>
           <table> 
             <thead>
               <tr className="table-header-row">
@@ -142,7 +142,7 @@ class RecipeDetail extends Component {
                 <td>{totalDoughWeight}</td>
                 <td></td>
                 {this.state.scaleRecipe && <td>{this.state.numLoaves*this.state.dropWeight}</td>}
-                {this.state.scaleRecipe && <td>£{totalScaledBatchCost.toFixed(2)}</td>}
+                {this.state.scaleRecipe && <td id="cost-per-batch">£{totalScaledBatchCost.toFixed(2)}</td>}
               </tr>
             </tfoot>
           </table>
@@ -156,7 +156,7 @@ class RecipeDetail extends Component {
             
             {this.state.scaleRecipe && <RecipeScalingInput onNumLoavesChange={this.handleNumLoavesInput}
                                                           onDropWeightChange={this.handleDropWeightInput}/>}
-            {this.state.scaleRecipe && <p className="ingredient-cost">Ingredient cost/loaf = £{costPerLoaf.toFixed(2)}</p>}
+            {this.state.scaleRecipe && <p id="cost-per-loaf" className="ingredient-cost">Ingredient cost/loaf = £{costPerLoaf.toFixed(2)}</p>}
           </div>
         </div>
         <div className="flex-item main-right">

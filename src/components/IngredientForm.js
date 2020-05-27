@@ -52,7 +52,7 @@ class IngredientForm extends Component {
             <form onSubmit={this.handleSubmit} >
               <div className="flex-container">
                   <div>
-                      <select id="ingredient-selector" onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
+                      <select id={this.props.dropdownID} onChange={this.handleSelectChange} name="ingredientID" value={this.state.ingredientID}>
                       <option value >{this.props.selectText}</option>
                       {options}
                       </select>
@@ -63,13 +63,13 @@ class IngredientForm extends Component {
                           onChange={this.handleInputChange}
                           className="input-box"
                           type="number"
-                          id="ingredient-quantity"
+                          id={this.props.inputID}
                           name="quantity"
                           value={this.state.quantity}
                         />
                   </div>
                   <div>
-                      <input type="submit" value={this.props.buttonText} />
+                      <input id={this.props.buttonID} type="submit" value={this.props.buttonText} />
                   </div>
               </div>
             </form>

@@ -35,7 +35,7 @@ class CreateRecipesBox extends Component {
           .then(rawMaterials => this.setState({ levainRawMaterials: rawMaterials}))
           .catch(err => console.error);
       
-          const urlDough = 'http://localhost:8080/raw_materials?type-in=Flour,Liquid,Other,Yeast';
+          const urlDough = 'http://localhost:8080/raw_materials?type-in=Flour,Liquid,Salt,Other,Yeast';
     
           fetch(urlDough)
             .then(res => res.json())
@@ -151,7 +151,7 @@ class CreateRecipesBox extends Component {
                 return <tr key={'Dough' + ingredient.rawMaterial.id} value={ingredient.rawMaterial.id}>
                             <td>{ingredient.rawMaterial.name}</td>
                             <td>{ingredient.quantity}</td>
-                            <td>{(100*ingredient.quantity/totalFlour).toFixed(1)}%</td>
+                            <td>{totalFlour && (100*ingredient.quantity/totalFlour).toFixed(1)}%</td>
                             <td className="noCellBorder"><button id={'Dough' + ingredient.rawMaterial.id} className="bin-button" type="button" onClick={this.handleDelete}></button></td>
                         </tr>
             })
@@ -159,17 +159,17 @@ class CreateRecipesBox extends Component {
 
 
             const liquidIngredients = this.state.recipeIngredients.filter(ingredient => ingredient.rawMaterial.type === "Liquid");
-            const totalLiquid = liquidIngredients.reduce((total, ingredient) => {
+            var totalLiquid = liquidIngredients.reduce((total, ingredient) => {
                 return total + ingredient.quantity;
             },0);
             var totalHydration = 0;
-            if (totalFlour){totalHydration = (100*totalLiquid/totalFlour).toFixed(1);}
+            if (totalFlour >0 ){totalHydration = (100*totalLiquid/totalFlour).toFixed(1);}
         };
         return(
             <>
-            <div className="main-container">
+            <div className="build-container">
     
-                <div className="flex-item main-left-2">
+                <div className="build-left">
                     <h2>Build a new recipe</h2>
                     <table> 
                         <thead>
@@ -196,7 +196,7 @@ class CreateRecipesBox extends Component {
                         <tfoot>
                         <tr className="table-footer-row">
                             <td>Total Hydration</td>
-                            <td></td>
+                            <td>{totalLiquid}</td>
                             <td>{totalHydration}%</td>
                             <td className="noCellBorder"></td>
                         </tr>
@@ -219,17 +219,25 @@ class CreateRecipesBox extends Component {
                     <div><IngredientForm ingredients={this.state.levainRawMaterials}
                                     onSubmit={this.handleLevainSubmit}
                                     selectText="Levain Ingredient"
+                                    dropdownID="levain-select"
+                                    inputID="levain-input"
+                                    buttonID="levain-button"
                                     buttonText="Add to Levain"/>
                     </div>
                     <div>
                         <IngredientForm ingredients={this.state.doughRawMaterials}
                                     onSubmit={this.handleDoughSubmit}
                                     selectText="Dough Ingredient"
+                                    dropdownID="dough-select"
+                                    inputID="dough-input"
+                                    buttonID="dough-button"
                                     buttonText="Add to Dough"/>
                     </div>
-                    <div><SaveRecipeForm onSubmit={this.handleSave}/></div>
+                    <div><SaveRecipeForm onSubmit={e =>
+        window.confirm("Are you sure you wish to save this recipe?") &&
+        this.handleSave(e)}/></div>
                 </div>
-                <div className="flex-item main-right">
+                <div className="build-right">
                 <img id="inredient-image" className="ingredient-image" src={'./images/grains.jpg'} alt="grain"/>
                 </div>
             </div>
